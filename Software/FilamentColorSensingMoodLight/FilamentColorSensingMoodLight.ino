@@ -3,8 +3,8 @@
 * Author: Michael Kruger
 * Brief:
 * 
-* The instructable for this project can be found here:
-* 
+* The GitHub for this project can be found here:
+* https://github.com/Krugaroo/FilamentColorSensingMoodLight 
 * 
 * License: MIT License
 *
