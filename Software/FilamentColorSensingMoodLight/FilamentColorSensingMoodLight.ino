@@ -42,13 +42,13 @@ Adafruit_NeoPixel RGB_strip = Adafruit_NeoPixel(RGB_NUM_LEDS, RGB_DATAPIN, NEO_G
 #define S3_COLOR_SEL_PIN 4
 
 /* Calibration data */
-#define RED_MIN   748
-#define GREEN_MIN 648
-#define BLUE_MIN  791
+#define RED_MIN   216
+#define GREEN_MIN 185
+#define BLUE_MIN  215
 
-#define RED_MAX   3117
-#define GREEN_MAX 2948
-#define BLUE_MAX  3102
+#define RED_MAX   1363
+#define GREEN_MAX 1239
+#define BLUE_MAX  1508
 
 enum Color{
   COLOR_RED,  COLOR_GREEN,  COLOR_BLUE
@@ -212,21 +212,21 @@ void ColorSensor_ConvertInput(ColorData* outColors)
  */
 void ColorSensor_AmplifyColor(ColorData* inColors, ColorData* outColors)
 {
-  if(inColors->blue > inColors->red && inColors->blue > inColors->green)
+  if(inColors->blue > inColors->red && inColors->blue > inColors->green && inColors->blue>5)
   {
     float ratio = inColors->blue/255.0;
     outColors->blue = 255;
     outColors->red = inColors->red/ratio;
     outColors->green = inColors->green/ratio;
   }
-  else if(inColors->green > inColors->red && inColors->green > inColors->blue)
+  else if(inColors->green > inColors->red && inColors->green > inColors->blue  && inColors->green>5)
   {
     float ratio = inColors->green/2.55;
     outColors->green = 255;
     outColors->red = inColors->red/ratio;
     outColors->blue = inColors->blue/ratio;
   }
-  else if(inColors->red > inColors->green && inColors->red > inColors->blue)
+  else if( inColors->red>5)
   {
     float ratio = inColors->red/255.0;
     outColors->red = 255;
